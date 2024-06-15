@@ -10,6 +10,7 @@ local M = {}
 ---@field chat_template string? Template to use for chat
 
 ---@class Config cmp-tabby config table
+---@field cmd string Which tabby executable to use
 ---@field endpoint string Which tabby endpoint to use
 ---@field token string? Authorization token to send to Tabby
 ---@field device Device Device to use for model inference
@@ -21,6 +22,7 @@ local M = {}
 ---@field run_on_every_keystroke boolean Generate new completion items on every keystroke.
 ---@field ignored_file_types string[] Which file types to ignore.
 local conf_defaults = {
+	executable = 'tabby',
     endpoint = 'http://localhost',
     token = nil,
     device = 'cpu',

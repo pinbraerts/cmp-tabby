@@ -45,9 +45,6 @@ local function get_parent_dir(path)
     return parent_dir
 end
 
--- do this once on init, otherwise on restart this dows not work
-local binary = get_parent_dir(get_parent_dir(script_path())) .. 'tabby/target/release/tabby'
-
 local function server_ran_locally()
     return conf:get('endpoint') == 'http://localhost'
 end
@@ -103,7 +100,7 @@ function CompletionServer.on_exit(self, job, code)
     -- if it works it ain't stupid
     port = math.random(49152, 65535)
     self.job = fn.jobstart({
-        binary,
+		conf:get('cmd'),
         'serve',
         '--port',
         port,
