@@ -24,13 +24,6 @@ Using [Lazy](https://github.com/folke/lazy.nvim/):
 return require("lazy").setup({
  {
      'errornonamer/cmp-tabby',
-     build = 'cargo install tabby', -- for cpu inference only
-     --build = 'cargo install tabby --cuda',
-     --build = 'cargo install tabby --rocm',
-     --build = 'cargo install tabby --vulkan',
-     --build = 'cargo install tabby --oapi', -- to use ABSOLUTELY PROPRIETARY models for some reason (just use copilot or smth than smh)
-                                             -- or if you have too much ram to spare and would use general purpose language modes for this with openai compatible api server
-                                             -- do note that they're untested because I'm too broke to pay the api fee
      dependencies = 'hrsh7th/nvim-cmp',
  }})
 ```
@@ -41,6 +34,7 @@ return require("lazy").setup({
 local tabby = require('cmp_tabby.config')
 
 tabby:setup({
+    executable = 'tabby',
     endpoint = 'http://localhost',
     token = nil,
     device = 'cpu',
